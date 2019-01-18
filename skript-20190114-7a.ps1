@@ -8,9 +8,9 @@ Get-EventLog -LogName System -EntryType Warning,Error -After (Get-Date).AddHours
 
 Get-EventLog -LogName System -EntryType Error,Warning -Newest 100 | Sort-Object -Unique | ConvertTo-HTML | Out-File $File1
 
-$m=Get-EventLog -LogName System -EntryType Error,Warning -Newest 10 | measure
-$m.Count
+$a=Get-EventLog -LogName System -EntryType Error,Warning -Newest 10 | measure
+$a.Count
 
-if ($m.Count -ge 10){
+if ($a.Count -ge 10){
     Write-Warning ("More then 10 errors!")
 }
